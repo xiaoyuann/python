@@ -30,6 +30,19 @@ for h in L:
 do={'bob':12,'lucy':15,'tom':16}
 print(do['bob'])
 d=do.get('bob',-1)
-print(d)'''
-s=set([1,[2,3],3])
+print(d)
+s=set([1,2,3,4])
 print(s)
+def mix(x,n=3):
+    s=1
+    while n>0:
+        s=s*x
+        n=n-1
+    return s
+print(mix(5,5))'''
+
+def init(name,age,city="ChengDu"):
+    print('name:',name)
+    print('age:',age)
+    print("city:",city)
+init('bob',20,'XiAn')
