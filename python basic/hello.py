@@ -39,10 +39,33 @@ def mix(x,n=3):
         s=s*x
         n=n-1
     return s
-print(mix(5,5))'''
+print(mix(5,5))
 
 def init(name,age,city="ChengDu"):
     print('name:',name)
     print('age:',age)
     print("city:",city)
 init('bob',20,'XiAn')
+
+def append(L=None):
+    if L is None:
+        L=[]
+    L.append('END')
+    return L
+print(append())
+print(append())
+print(append())
+
+def person(name,phone,**kw):
+    print('name:',name,'phone:','other:',kw)
+person('bob',12586,number='3568+')'''
+
+
+
+def fact_iter(num, product):
+    if num == 1:
+        return product
+    return fact_iter(num - 1, num * product)
+def fact(n):
+    return fact_iter(n, 1)
+print(fact(5))
