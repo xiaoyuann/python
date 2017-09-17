@@ -238,12 +238,12 @@ app = Application()
 # 设置窗口标题:
 app.master.title()
 # 主消息循环:
-app.mainloop()'''
+app.mainloop()
 
 import socket
 sina=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-sina.connect(('www.163.com.cn',80))
-sina.send(b'GET / HTTP/1.1\r\nHost: www.163.com.cn\r\nConnection: close\r\n\r\n')
+sina.connect(('www.sina.com.cn',80))
+sina.send(b'GET / HTTP/1.1\r\nHost: www.sina.com.cn\r\nConnection: close\r\n\r\n')
 buffer = []
 while True:
     # 每次最多接收1k字节:
@@ -259,3 +259,54 @@ print(header.decode('utf-8'))
 # 把接收的数据写入文件:
 with open('sina.html', 'wb') as f:
     f.write(html)
+
+import logging
+logging.basicConfig(level=logging.INFO,format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                datefmt='%a, %d %b %Y %H:%M:%S',
+                filename='myapp.log',
+                filemode='w')
+logging.debug('this is a debug message')
+logging.info('this is a info message')
+logging.warning('this is a warning message')
+
+import logging; logging.basicConfig(level=logging.INFO)
+
+import asyncio, os, json, time
+from datetime import datetime
+
+from aiohttp import web
+
+def index(request):
+    return web.Response(body=b'<h1>Awesome</h1>')
+
+@asyncio.coroutine
+def init(loop):
+    app = web.Application(loop=loop)
+    app.router.add_route('GET', '/', index)
+    srv = yield from loop.create_server(app.make_handler(), '127.0.0.1', 9000)
+    logging.info('server started at http://127.0.0.1:9000...')
+    return srv
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(init(loop))
+loop.run_forever()'''
+
+import asyncio
+from aiohttp import web
+ 
+def index(request):
+    return web.Response(body=b'<h1>Hello World!</h1>')
+ 
+async def init(loop):
+    app = web.Application(loop=loop)
+    app.router.add_route('GET', '/index', index)
+    server = await loop.create_server(app.make_handler(), '127.0.0.1', 8000)
+    return server
+ 
+def main():
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(init(loop))
+    loop.run_forever()
+ 
+if __name__ == '__main__':
+    main()
