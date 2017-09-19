@@ -289,4 +289,42 @@ def init(loop):
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(init(loop))
-loop.run_forever()'''
+loop.run_forever()
+
+import requests
+
+response = requests.get('http://www.baidu.com')
+print(response.status_code)
+print(response.text)
+print(response.encoding)
+print(response.apparent_encoding)
+response.encoding = response.apparent_encoding
+print(response.text)
+
+import requests
+
+def getHTML(url):
+    try:
+        r=requests.get(url)
+        r.raise_for_status()
+        r.encoding=r.apparent_encoding
+        return r.text
+    except:
+        return '出现异常'
+
+url='http://www.sina.com'
+print(getHTML(url))'''
+
+import  requests
+
+try:
+    kv = {'user-agent':'Mozilla/5.0'}
+    url = 'https://item.jd.com/5005885.html'
+    r = requests.get(url,timeout=10,headers=kv)
+    r.raise_for_status()
+    r.encoding = r.apparent_encoding
+    print(r.text[:5000])
+    print(r.request.headers)
+except:
+    print('爬取失败')
+
