@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 #爬取淘宝手机信息
 
-__author__ = 'Aurora'
+__author__ = 'Aurora-Twinkle'
 
 import requests
 import re
