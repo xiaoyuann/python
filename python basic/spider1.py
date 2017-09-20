@@ -6,6 +6,8 @@ __author__ = 'Aurora-Twinkle'
 
 import requests
 import re
+import xlwt
+
 
 def getHTMLText(url):
     try:
@@ -20,12 +22,18 @@ def getHTMLText(url):
     
 def parsePage(infolist,html):
     try:
+        f = xlwt.Workbook()#创建表格存入爬取数据
+        sheet1 = f.add_sheet(u'sheet1',cell_overwrite_ok=True)
         plt = re.findall(r'\"price\"\:\"[\d\.]+\"',html)#使用正则匹配所需信息
         tlt = re.findall(r'\"title\"\:\".*?\"',html)
         for i in range(len(tlt)):
             price = eval(plt[i].split(':')[1]) + '元'
             title = eval(tlt[i].split(":")[1])
             infolist.append([price,title])
+        for j in range(len(infolist)):
+            sheet1.write(j,1,infolist[j][0])
+            sheet1.write(j,2,infolist[j][1])
+        f.save('test.xls')
     except:
         return ''
 
