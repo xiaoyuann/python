@@ -26,15 +26,17 @@ def fillList(lists,html):
             lists.append([tds[0].string,tds[1].string,tds[2].string])
 
 def printList(lists,num):
-    print('{:^10}\t{:^6}\t{:^10}'.format('排名','学校名称','省市'))
+    tplt = '{0:^10}\t{1:{3}^10}\t{2:^10}'
+    print(tplt.format('排名','学校名称','省市',chr(12288)))
     for i in range(num):
         u = lists[i]
-        print('{:^10}\t{:^6}\t{:^10}'.format(u[0],u[1],u[2]))
+        print(tplt.format(u[0],u[1],u[2],chr(12288)))
 
 def main():
     uinfo = []
-    url = 'http://www.zuihaodaxue.cn/zuihaodaxuepaiming2016.html'
+    url = 'http://www.zuihaodaxue.cn/zuihaodaxuepaiming2015_0.html'
     html = getHTML(url)
     fillList(uinfo,html)
-    printList(uinfo,200)
+    printList(uinfo,100)
+
 main()
