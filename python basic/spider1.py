@@ -38,13 +38,13 @@ def printGoodsList(goodsInfo):
 
 
 def main():
-    goods = '手机'
-    pages = 10#访问网页数
+    goods = '华为手机'
+    pages = 3#访问网页数
     init_url = 'https://s.taobao.com/search?q=' + goods
     goodsInfo = []
     for i in range(pages):
         try:
-            url = init_url + '&s=' + str(100 * i)
+            url = init_url + '&s=' + str(44 * i)
             html = getHTMLText(url)
             parsePage(goodsInfo,html)
         except:
