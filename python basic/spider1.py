@@ -13,6 +13,7 @@ def getHTMLText(url):
         r = requests.get(url,timeout=30,headers=kv)
         r.raise_for_status()#检测是否成功响应服务器
         r.encoding = r.apparent_encoding
+        print(r.request.headers)
         return r.text
     except:
         return ''
