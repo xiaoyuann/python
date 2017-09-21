@@ -326,11 +326,11 @@ try:
     print(r.text[:5000])
     print(r.request.headers)
 except:
-    print('爬取失败')'''
+    print('爬取失败')
 
 import requests
 import os
-url = ''
+url = 'https://telerik-fiddler.s3.amazonaws.com/fiddler/FiddlerSetup.exe'
 root = 'E://mov//'
 path = root+url.split('/')[-1]
 kv = {'user-agent':'Mozilla/5.0'}
@@ -346,9 +346,39 @@ try:
     else:
         print("文件已存在")
 except:
-    print('爬取失败')
+    print('爬取失败')'''
 
 
 
+import urllib.request,urllib.parse,urllib.error
+import http.cookiejar
+
+LOG_URL = 'http://idas.uestc.edu.cn/authserver/login'
+values = {'username':'2016060101007','password':'209081'}
+postdata = urllib.parse.urlencode(values).encode()
+user_agent = r'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.91 Safari/537.36'
+headers = {'User-Agent':user_agent,'Connection':'keep-alive'}
+
+cookie_filename = 'cookie.txt'
+
+cookie = http.cookiejar.MozillaCookieJar()
+handler = urllib.request.HTTPCookieProcessor(cookie)
+opener = urllib.request.build_opener(handler)
+
+request = urllib.request.Request(LOG_URL,postdata,headers)
+try:
+    response = opener.open(request)
+    page = response.read().decode()
+except urllib.error.URLError as e:
+    print(e.code,':',e.reason)
+
+cookie.save(filename=cookie_filename,ignore_discard=True,ignore_expires=True)
+print(cookie)
+for item in cookie:
+    print('name = ' + item.name)
+    print('value = ' + item.value)
 
 
+get_request = urllib.request.Request(get_url,headers)
+get_response = opener.open(get_request)
+print(get_response.read().decode())
