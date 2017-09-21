@@ -11,7 +11,7 @@ get_url = 'http://eams.uestc.edu.cn/eams/home!childmenus.action?menu.id=844'
 
 values = {
     'username':'2016060101007',
-    'password':'209081'
+    'password':''
     }
 postdata = urllib.parse.urlencode(values).encode()
 user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.91 Safari/537.36'

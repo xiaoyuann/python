@@ -17,9 +17,9 @@ lt = soup.find('input',{'name':'lt'})['value']
 print(lt)
 values = {
     'username':'2016060101007',
-    'password':'209081',
+    'password':'',
     'lt':lt
     }
 uestc_session.post(url,data=values,headers=headers)
 f = uestc_session.get(get_url,headers=headers)
-print(f.content.decode())
+print(f.content.decode('utf-8'))
