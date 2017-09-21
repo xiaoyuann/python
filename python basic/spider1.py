@@ -47,7 +47,7 @@ def printGoodsList(goodsInfo):
 
 
 def main():
-    goods = '华为手机'
+    goods = '手机'
     pages = 3#访问网页数
     init_url = 'https://s.taobao.com/search?q=' + goods
     goodsInfo = []
