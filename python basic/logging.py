@@ -23,6 +23,8 @@ request = urllib.request.Request(LOGIN_URL,postdata,headers=headers)
 try:
     response = opener.open(request)
     page = response.read().decode()
+except urllib.error.HTTPError as e:
+    print(e.code,':',e.reason)
 except urllib.error.URLError as e:
     print(e.code,':',e.reason)
 
