@@ -42,4 +42,5 @@ def main():
     HtmlText = openOtherUrl(other_url,login_rul)
     print(HtmlText.text)
 
+
 main()
