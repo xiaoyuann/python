@@ -31,7 +31,7 @@ def getResponseAfterLogin(login_rul):
     uestc_session.post(login_rul,data=postData,headers=headers)#使用构建好的表单更新cookies
     return uestc_session
 
-    
+
 def openOtherUrl(other_url,login_rul):
     uestc = getResponseAfterLogin(login_rul)
     return uestc.get(other_url,headers=headers)
@@ -43,5 +43,3 @@ def main():
     print(HtmlText.text)
 
 main()
-
-
