@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 
 class WHUHelper(object):
     __loginuri='http://idas.uestc.edu.cn/authserver/login'
-    __logindo='http://eams.uestc.edu.cn/eams/home!childmenus.action?menu.id=844'
+    __logindo='http://eams.uestc.edu.cn/eams/myPlan.action?_=1506086864459'
     def __init__(self,name='',password=''):
         if not isinstance(name,str):
             raise TypeError('请输入字符串')
