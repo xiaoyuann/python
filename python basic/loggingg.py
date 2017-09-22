@@ -21,7 +21,7 @@ class WHUHelper(object):
             self.password=password
         else:
             raise TypeError('请输入字符串')
-    #返回一个登陆成功后的Responsedef__getResponseAfterLogin(self):
+    def __getResponseAfterLogin(self):
         #模拟一个浏览器头
         header={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0'}
         #保持Cookie不变，然后再次访问这个页面
@@ -46,13 +46,13 @@ class WHUHelper(object):
             'rmShown':dic['rmShown']}
         #使用构建好的PostData重新登录,以更新Cookie
         r=s.post(self.__loginuri, data=params,headers=header)
-        #返回登录后的responsereturn s
-    def __getHtmlOfPerson(self):
+        return s
+    def getHtmlOfPerson(self):
         s=self.__getResponseAfterLogin()
-        personUri='http://yjs.whu.edu.cn/ssfw/index.do#'
+        personUri='http://eams.uestc.edu.cn/eams/home!childmenus.action?menu.id=844'
         r=s.get(personUri)
         return r.text
-    def getPersonInfor(self):
+    '''def getPersonInfor(self):
         s=self.__getResponseAfterLogin()
         bs=BeautifulSoup(self.__getHtmlOfPerson(),'html.parser')
         dic={}
@@ -90,7 +90,7 @@ class WHUHelper(object):
                 classInfo[i][j]=str(td.get_text()).encode('gbk','ignore').decode('gbk')
                 j=j+1
         classInfo.insert(0, classTitle)        
-        return classInfo
+        return classInfo'''
 
 a = WHUHelper('2016060101007','')
-print(a.getClassInfo())
+print(a.getHtmlOfPerson())
