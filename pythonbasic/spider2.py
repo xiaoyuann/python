@@ -20,7 +20,7 @@ def getResponseAfterLogin(login_rul):
     execution = soup.find('input',{'name':'execution'})['value']
     postData = {
         'username':'2016060101007',
-        'password':'',
+        'password':'209081',
         'lt':lt,
         'execution':execution,
         'dllt':'userNamePasswordLogin',
