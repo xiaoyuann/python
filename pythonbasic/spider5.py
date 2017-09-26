@@ -27,7 +27,7 @@ class Spider:
     def getContents(self,pageIndex):
         page = self.getPage(pageIndex)
         pattern = re.compile(r'<div class="list-item".*?<div class="pic s60".*?<a href="(.*?)".*?<img src="(.*?)".*?<a class="lady-name".*?>(.*?)</a>.*?<strong>(.*?)</strong>.*?<span>(.*?)</span>.*?<p>.*?<em>(.*?)</em>.*?',re.S)
-        items = re.findall(pattern,page)
+        items = re.findall(pattern,str(page))
         contents = []
         for item in items:
             contents.append([item[0],item[1],item[2],item[3],item[4],item[5]])
@@ -102,7 +102,9 @@ class Spider:
             image = self.getAllImages(detailPage)
             self.mkdir(item[2])
             self.saveIcons('https:' + item[1],item[2])
-            self.saveImgs(image,item[2])
+            for i in range(len(image)):
+                self.saveImgs('https' + image[i],item[2])
+            
 
     def savePageInfos(self,start,end):
         for i in range(start,end+1):
