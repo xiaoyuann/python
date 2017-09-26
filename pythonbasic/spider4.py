@@ -14,10 +14,15 @@ try:
     response = urllib.request.urlopen(request)
     content = response.read().decode('utf-8')
     soup = BeautifulSoup(content,'html.parser')
-    for s in soup.findAll('h2'):
-    	#HAVEimg = re.search('img',item[3])
-    	#if not HAVEimg:
-        print(s.string)
+    L=[]
+    M=[]
+    for h in soup.find_all('h2'):
+    	M.append(h.string)
+    for s in soup.find_all('div',{'class':'content'}):
+        joke = s.span.get_text('\n','<br/>')
+        L.append(joke)
+    for j in range(len(L)):
+    	print(M[j],L[j],'\n')
 except urllib.error.URLError as e:
 	if hasattr(e,'code'):
 		print(e.code)
