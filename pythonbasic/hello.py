@@ -290,3 +290,23 @@ def init(loop):
 loop = asyncio.get_event_loop()
 loop.run_until_complete(init(loop))
 loop.run_forever()
+
+import requests
+import os
+url = 'https://telerik-fiddler.s3.amazonaws.com/fiddler/FiddlerSetup.exe'
+root = 'E://mov//'
+path = root+url.split('/')[-1]
+kv = {'user-agent':'Mozilla/5.0'}
+try:
+    if not os.path.exists(root):
+        os.mkdir(root)
+    if not os.path.exists(path):
+        r = requests.get(url,headers=kv)
+        with open(path,'wb') as f:
+            f.write(r.content)
+            f.close()
+            print('保存成功')
+    else:
+        print("文件已存在")
+except:
+    print('爬取失败')
