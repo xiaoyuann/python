@@ -27,7 +27,7 @@ class Spider:
     def getContents(self,pageIndex):
         page = self.getPage(pageIndex)
         pattern = re.compile(r'<div class="list-item".*?<div class="pic s60".*?<a href="(.*?)".*?<img src="(.*?)".*?<a class="lady-name".*?>(.*?)</a>.*?<strong>(.*?)</strong>.*?<span>(.*?)</span>.*?<p>.*?<em>(.*?)</em>.*?',re.S)
-        items = re.findall(pattern,str(page))
+        items = re.findall(pattern,page)
         contents = []
         for item in items:
             contents.append([item[0],item[1],item[2],item[3],item[4],item[5]])
