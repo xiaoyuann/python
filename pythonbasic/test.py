@@ -9,6 +9,7 @@ handler = urllib.request.HTTPCookieProcessor(cookie)
 opener = urllib.request.build_opener(handler)
 
 get_url = 'http://eams.uestc.edu.cn/eams/home!childmenus.action?menu.id=844'  # 利用cookie请求访问另一个网址
+
 get_request = urllib.request.Request(get_url)
 get_response = opener.open(get_request)
 print(get_response.read().decode())
