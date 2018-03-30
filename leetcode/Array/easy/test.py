@@ -13,11 +13,11 @@ def isIsomorphic1(s, t):
     print(d1.values(),d2.values())
     return sorted(d1.values()) == sorted(d2.values())
              
-pattern='asdfgh'
-str='aa bb cc cc cc'
-
-for s in str.split():
-        print(s)
-        print({}.setdefault(s,range(len(s))))
+pattern='asda'
 f = lambda s: list(map({}.setdefault, s, range(len(s))))
-print(f(pattern),f(str.split()))
+print(f(pattern))
+def a(b,d):
+    print('b=',b,'d=',d)
+
+list(map(a,'abcd',range(4)))
+    
