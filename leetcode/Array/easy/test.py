@@ -1,23 +1,25 @@
-def moveZeroes():
+def findAnagrams():
         """
-        :type nums: List[int]
-        :rtype: void Do not return anything, modify nums in-place instead.
+        :type s: str
+        :type p: str
+        :rtype: List[int]
         """
-        
-def isIsomorphic1(s, t):
-    d1, d2 = {}, {}
-    for i, val in enumerate(s):
-        d1[val] = d1.get(val, []) + [i]
-    for i, val in enumerate(t):
-        d2[val] = d2.get(val, []) + [i]
-    print(d1.values(),d2.values())
-    return sorted(d1.values()) == sorted(d2.values())
-             
-pattern='asda'
-f = lambda s: list(map({}.setdefault, s, range(len(s))))
-print(f(pattern))
-def a(b,d):
-    print('b=',b,'d=',d)
+        s="cbaebabacd" 
+        p="abc"
+        res = []
+        n, m = len(s), len(p)
+        if n < m: return res
+        phash, shash = [0]*123, [0]*123
+        for x in p:
+            phash[ord(x)] += 1
+        for x in s[:m-1]:
+            shash[ord(x)] += 1
+        for i in range(m-1, n):
+            shash[ord(s[i])] += 1
+            if i-m >= 0:
+                shash[ord(s[i-m])] -= 1
+            if shash == phash:
+                res.append(i - m + 1)
+        return res
 
-list(map(a,'abcd',range(4)))
-    
+print(findAnagrams())
