@@ -22,4 +22,3 @@ def findAnagrams():
                 res.append(i - m + 1)
         return res
 
-print(findAnagrams())
