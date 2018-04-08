@@ -1,24 +1,21 @@
-def findAnagrams():
-        """
-        :type s: str
-        :type p: str
-        :rtype: List[int]
-        """
-        s="cbaebabacd" 
-        p="abc"
-        res = []
-        n, m = len(s), len(p)
-        if n < m: return res
-        phash, shash = [0]*123, [0]*123
-        for x in p:
-            phash[ord(x)] += 1
-        for x in s[:m-1]:
-            shash[ord(x)] += 1
-        for i in range(m-1, n):
-            shash[ord(s[i])] += 1
-            if i-m >= 0:
-                shash[ord(s[i-m])] -= 1
-            if shash == phash:
-                res.append(i - m + 1)
-        return res
+import pymysql
 
+conn=pymysql.connect("localhost","root","888888","contact",charset="utf8")
+cur=conn.cursor()
+'''cursor.execute("DROP TABLE IF EXISTS CONTACTS")
+sql="""create table contacts(
+    Cname char(20),
+    PhoneNumber char(12) NOT NULL,
+    Cage int,
+    Csex char(4),
+    Caddress char(20) )"""
+cursor.execute(sql)'''
+
+sql="""alter table contacts modify Cid int not null auto_increment first"""
+
+try:
+    cur.execute(sql)
+    conn.commit()
+except:
+    conn.rollback()
+conn.close()
