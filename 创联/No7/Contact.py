@@ -21,13 +21,13 @@ def close():  # 关闭数据库
 def viewAll():  # 查看全部联系人
     cursor.execute('SELECT * FROM CONTACTS')
     connect.commit()
-    print("%-6s%-10s%-14s%-5s%-5s%-10s"% ("编号","姓名","电话","年龄","性别","地址"))
+    print("%-6s%-10s%-14s%-5s%-5s%-10s" % ("编号", "姓名", "电话", "年龄", "性别", "地址"))
     result = cursor.fetchall()
     for row in result:
         results = []
         for col in row:
             results.append(col)
-        print("%-6s%-10s%-14s%-5s%-5s%-10s"% (results[0],results[1],results[2],results[3],results[4],results[5]))
+        print("%-6s%-10s%-14s%-5s%-5s%-10s" % (results[0], results[1], results[2], results[3], results[4], results[5]))
 
 
 def addContact():  # 增加联系人
@@ -103,69 +103,117 @@ def addContact():  # 增加联系人
         connect.commit()
         print('该联系人已经成功添加')
 
-def deleteContact():#删除联系人
+
+def deleteContact():  # 删除联系人
     print('---删除联系人---')
-    deleteName=input('请输入联系人姓名(按Esc退出):')
-    if deleteName=='Esc':
+    deleteName = input('请输入联系人姓名(按Esc退出):')
+    if deleteName == 'Esc':
         return
-    result=cursor.execute('delete from contacts where Cname=%s',deleteName)
-    if result==1:
+    result = cursor.execute('delete from contacts where Cname=%s', deleteName)
+    if result == 1:
         print('删除成功')
-    elif result==0:
+    elif result == 0:
         print('未找到该联系人')
 
-def modify():#修改联系人
-    print('---修改联系人---')
-    modify==True
-    name=input('请输入要修改的联系人姓名(按Esc退出):')
-    if name=='Esc':
-        return
-    cursor.execute('select * from contacts where Cname = %s',name)
 
-def search():#搜索联系人
+def modify():  # 修改联系人
+    print('---修改联系人---')
+    modify = True
+    name = input('请输入要修改的联系人姓名(按Esc退出):')
+    if name == 'Esc':
+        return
+    cursor.execute('select * from contacts where Cname = %s', name)
+    print('编号  姓名  电话  年龄  性别  地址  ')
+    for row in cursor.fetchall():
+        result = ''
+        for col in row:
+            result = result + '\t' + str(col)
+        if result == '':
+            print('此联系人不存在')
+            return
+        print(result)
+    while modify == True:
+        print('请选择需要修改的部分:')
+        choose = input('1.姓名 2.电话 3.年龄 4.性别 5.地址 6.退出修改\n')
+        if choose == '1':
+            newName = input('请输入新姓名:')
+            cursor.execute("update contacts set Cname='%s' where Cname='%s'" % (newName, name))
+            connect.commit()
+            print('修改成功')
+        elif choose == '2':
+            newPhone = input('请输入新电话:')
+            cursor.execute("update contacts set PhoneNumber=%s where Cname=%s" % (newPhone, name))
+            connect.commit()
+            print('修改成功')
+
+        elif choose == '3':
+            newAge = input('请输入新年龄:')
+            cursor.execute("update contacts set Cage='%s' where Cname='%s'" % (newAge, name))
+            connect.commit()
+            print('修改成功')
+
+        elif choose == '4':
+            newSex = input('请输入新性别:')
+            cursor.execute("update contacts set Csex='%s' where Cname='%s'" % (newSex, name))
+            connect.commit()
+            print('修改成功')
+
+        elif choose == '5':
+            newAddress = input('请输入新地址:')
+            cursor.execute("update contacts set Caddress='%s' where Cname='%s'" % (newAddress, name))
+            connect.commit()
+            print('修改成功')
+
+        elif choose == '6':
+            modify = False
+
+
+def search():  # 搜索联系人
     print('查找联系人')
     print('请选择查找条件:')
-    condion=input('1.姓名 2.电话 3.地址\n')
-    if condion=='1':
-        name=input('请输入姓名或其中部分:')
-        cursor.execute("select * from contacts where Cname like '%%%s%%'"%name)
-    elif condion=='2':
-        phone=input('请输入电话或者其中部分:')
-        cursor.execute("select * from contacts where PhoneNumber like '%%%s%%'"%phone)
-    elif condion=='3':
-        address=input('请输入地址或者其中部分:')
-        cursor.execute("select * from contacts where Caddress like '%%%s%%'"%address)
+    condion = input('1.姓名 2.电话 3.地址\n')
+    if condion == '1':
+        name = input('请输入姓名或其中部分:')
+        cursor.execute("select * from contacts where Cname like '%%%s%%'" % name)
+    elif condion == '2':
+        phone = input('请输入电话或者其中部分:')
+        cursor.execute("select * from contacts where PhoneNumber like '%%%s%%'" % phone)
+    elif condion == '3':
+        address = input('请输入地址或者其中部分:')
+        cursor.execute("select * from contacts where Caddress like '%%%s%%'" % address)
     connect.commit()
     print('编号  姓名  电话  年龄  性别  地址  ')
     for row in cursor.fetchall():
-        result=''
+        result = ''
         for col in row:
-            result=result+'\t'+str(col)
+            result = result + '\t' + str(col)
         print(result)
+
 
 def main():
     print('---简易通讯录---')
     connect()
-    running=True
+    running = True
     while running:
         print('请选择操作:')
-        operation=input('1.展示全部联系人 2.添加联系人 3.删除联系人 4.查找联系人 5.修改联系人 6.退出\n')
-        if operation=='1':
+        operation = input('1.展示全部联系人 2.添加联系人 3.删除联系人 4.查找联系人 5.修改联系人 6.退出\n')
+        if operation == '1':
             viewAll()
-        elif operation=='2':
+        elif operation == '2':
             addContact()
-        elif operation=='3':
+        elif operation == '3':
             deleteContact()
-        elif operation=='4':
+        elif operation == '4':
             search()
-        elif operation=='5':
+        elif operation == '5':
             modify()
-        elif operation=='6':
-            running=False
+        elif operation == '6':
+            running = False
         else:
             print('请输入1-6的数字')
     close()
     print('****************')
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
