@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Home{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Message Board</h1>
+</div>
+<div>
+    <p>
+        <ol>
+            {% for message in messages %}
+            <li> {{message}} </li>
+            {% endfor %}
+        </ol>
+    </p>
+</div>
+{{ wtf.quick_form(form) }}
+{% endblock %}
