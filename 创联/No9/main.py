@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
 __author__ = 'Aurora-Twinkle'
@@ -30,7 +30,7 @@ def Response_headers(content):
 @app.route('/registuser')
 def getRigistRequest():
 
-    db = pymysql.connect('localhost', 'root', '888888', 'Message', charset='utf8')
+    db = pymysql.connect('localhost', '', '', '', charset='utf8')
     cursor = db.cursor()
     sql = "INSERT INTO user(user, password) VALUES ("+request.form['user']+", "+request.form['password']+")"
     try:

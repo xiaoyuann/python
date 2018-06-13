@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
 __author__ = 'Aurora-Twinkle'
@@ -9,7 +9,7 @@ import pymysql
 def connect():  # 连接数据库
     global connect
     global cursor
-    connect = pymysql.connect('localhost', 'root', '888888', 'contact', charset='utf8')
+    connect = pymysql.connect('localhost', '', '', '', charset='utf8')
     cursor = connect.cursor()
 
 
