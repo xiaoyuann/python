@@ -28,4 +28,4 @@ class ScrapeCallback:
 
 
 if __name__ == '__main__':
-    link_crawl('http://example.webscraping.com/', '/places/default/(index|view)/(\S+)', delay=1, max_retries=1, max_depth=6, scrape_callback=ScrapeCallback(), cache=Mongocache())
+    link_crawl('http://example.webscraping.com/', '/places/default/(index|view)/(\S+)', delay=1, max_retries=1, max_depth=4, scrape_callback=ScrapeCallback(), cache=Mongocache())
