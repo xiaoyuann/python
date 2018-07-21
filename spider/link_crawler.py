@@ -9,39 +9,43 @@ from urllib.parse import urljoin, urlparse, urldefrag
 import urllib.robotparser
 import queue
 from downloader import Downloader
-
+from mongo_cache import Mongocache
+from alexa_cb import AlexaCallback
 
 def link_crawl(seed_url, link_regex=None, delay=5, max_depth=-1, max_urls=-1, user_agent='Aurora-Twinkle', proxies=None, max_retries=1, scrape_callback=None, cache=None):
-    crawl_queue = queue.deque([seed_url])
+    a_cb = AlexaCallback()
+
+    crawl_queue = a_cb(seed_url,'as')
     seen = {seed_url: 0}
     num_urls = 0
-    rp = get_robots(seed_url)
+    '''rp = get_robots(seed_url)'''
     D = Downloader(delay=delay, user_agent=user_agent, proxies=proxies, max_retries=max_retries, cache=cache)
     while crawl_queue:
         url = crawl_queue.pop()
-        depth = seen[url]
-        if rp.can_fetch(user_agent, url):
-            html = D(url)
-            links = []
-            if html is not None:
-                if scrape_callback:
-                    links.extend(scrape_callback(url, html) or [])
-                if depth != max_depth:
-                    if link_regex:
-                        links.extend(link for link in get_links(html) if re.match(link_regex, link))
+        '''depth = seen[url]'''
+        depth = -100
+        '''if rp.can_fetch(user_agent, url):'''
+        html = D(url)
+        links = []
+        if html is not None:
+            if scrape_callback:
+                links.extend(scrape_callback(url, html) or [])
+            if depth != max_depth:
+                if link_regex:
+                    links.extend(link for link in get_links(html) if re.match(link_regex, link))
 
-                    for link in links:
-                        link = format_link(seed_url, link)
-                        if link not in seen:
-                            seen[link] = depth + 1
-                            if same_domain(seed_url, link):
-                                crawl_queue.append(link)
+                for link in links:
+                    link = format_link(seed_url, link)
+                    if link not in seen:
+                        seen[link] = depth + 1
+                        if same_domain(seed_url, link):
+                            crawl_queue.append(link)
 
-                num_urls += 1
-                if num_urls == max_urls:
-                    break
-        else:
-            print('user_agent: "'+user_agent+'" Blocked by robots.txt:', url)
+            num_urls += 1
+            if num_urls == max_urls:
+                break
+        '''else:
+            print('user_agent: "'+user_agent+'" Blocked by robots.txt:', url)'''
 def get_links(html):
     regex_html = re.compile('<a[^>]+href=["\'](.*?)["\']', re.IGNORECASE)
     return regex_html.findall(html)

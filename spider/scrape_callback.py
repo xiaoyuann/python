@@ -8,6 +8,7 @@ import re
 from lxml import etree
 from link_crawler import link_crawl
 from mongo_cache import Mongocache
+from alexa_cb import AlexaCallback
 
 class ScrapeCallback:
     def __init__(self):
@@ -28,4 +29,4 @@ class ScrapeCallback:
 
 
 if __name__ == '__main__':
-    link_crawl('http://example.webscraping.com/', '/places/default/(index|view)/(\S+)', delay=1, max_retries=1, max_depth=4, scrape_callback=ScrapeCallback(), cache=Mongocache())
+    link_crawl('http://example.webscraping.com/', '/places/default/(index|view)/(\S+)', delay=1, max_retries=1, max_depth=7, scrape_callback=ScrapeCallback(), cache=Mongocache())

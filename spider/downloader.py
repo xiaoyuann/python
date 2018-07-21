@@ -36,7 +36,7 @@ class Downloader:
             headers = {'User-agent': self.user_agent}
             result = self.download(url, headers, proxies=proxies, max_retries = self.max_retries)
             if self.cache:
-                self.cache.__setitem__(url, result)
+                self.cache[url] = result
         return result['html']
 
     def download(self, url, headers, proxies, num_retries=1, max_retries=4):
