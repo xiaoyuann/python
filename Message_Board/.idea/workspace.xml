@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3cc76ac3-c108-4913-87a9-10ece85b6be6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../workroom/untitled/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../workroom/untitled/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../创联/No7/Contact.py" beforeDir="false" afterPath="$PROJECT_DIR$/../创联/No7/Contact.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../创联/No9/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../创联/No9/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../创联/段林林-后台-09.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../创联/No9/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../创联/No9/templates/login.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -71,8 +68,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/main/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+            <state relative-caret-position="190">
+              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
               <folding>
                 <element signature="e#0#111#0" expanded="true" />
               </folding>
@@ -197,6 +194,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -208,7 +206,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,7 +284,7 @@
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49785408" weight="0.3295325" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.33333334" />
       <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49784017" visible="true" weight="0.3537803" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49761903" visible="true" weight="0.23994638" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49761903" visible="true" weight="0.24664879" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32937366" />
       <window_info anchor="right" id="SciView" order="4" weight="0.3299356" />
@@ -707,8 +704,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/main/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
+        <state relative-caret-position="190">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
           <folding>
             <element signature="e#0#111#0" expanded="true" />
           </folding>

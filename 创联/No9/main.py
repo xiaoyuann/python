@@ -6,7 +6,7 @@ __author__ = 'Aurora-Twinkle'
 import pymysql
 from flask import Flask
 from flask import render_template
-from flask import request   
+from flask import request,Response
 import traceback  
 
 app = Flask(__name__)
@@ -30,7 +30,7 @@ def Response_headers(content):
 @app.route('/registuser')
 def getRigistRequest():
 
-    db = pymysql.connect('localhost', '', '', '', charset='utf8')
+    db = pymysql.connect('localhost', 'root', '888888', 'Message', charset='utf8')
     cursor = db.cursor()
     sql = "INSERT INTO user(user, password) VALUES ("+request.form['user']+", "+request.form['password']+")"
     try:
