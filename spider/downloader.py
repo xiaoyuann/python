@@ -41,24 +41,26 @@ class Downloader:
 
     def download(self, url, headers, proxies, num_retries=1, max_retries=4):
 
-        code = 505
+        code = 500
         try:
             r = requests.get(url, timeout=DEFAULT_TIMEOUT, headers=headers, proxies=proxies)
             code = r.status_code
-            print("Downloading:", url)
-            print(code)
             r.raise_for_status()
             r.encoding = r.apparent_encoding
             html = r.text
 
         except:
             html = None
-            print("Download error:", code)
+            print("Download error:", url, code)
             if num_retries <= max_retries and 500 <= code <= 600:
                 print("第", num_retries, "次重试:"+url)
                 return self.download(url, headers, proxies, num_retries + 1)
             else:
+                if 500 <= code <= 600:
+                    print("多次重试下载失败:", url, code)
                 code = None
+        else:
+            print("Downloading:", url, code)
         return {'html': html, 'code': code}
 
 class Throttle:

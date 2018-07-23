@@ -8,7 +8,7 @@ from zipfile import ZipFile
 from mongo_cache import Mongocache
 
 class AlexaCallback:
-    def __init__(self, max_urls=200):
+    def __init__(self, max_urls=10000):
         self.max_urls = max_urls
         self.seed_url = 'http://example.webscraping.com/'
 
