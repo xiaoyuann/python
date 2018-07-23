@@ -8,13 +8,13 @@ from zipfile import ZipFile
 from mongo_cache import Mongocache
 
 class AlexaCallback:
-    def __init__(self, max_urls=1000):
+    def __init__(self, max_urls=200):
         self.max_urls = max_urls
-        self.seed_url = 'http://s3.amazonaws.com/alexa-static/top-1m.csv.zip'
+        self.seed_url = 'http://example.webscraping.com/'
 
     def __call__(self, url, html):
+        urls = []
         if url == self.seed_url:
-            urls = []
             cache = Mongocache()
             with ZipFile('top.zip') as zf:
                 csv_filename = zf.namelist()[0]
