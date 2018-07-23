@@ -52,7 +52,7 @@ def thread_crawl(seed_url, max_threads=10, link_regex=None, delay=5, max_depth=-
             thread.setDaemon(True)
             thread.start()
             threads.append(thread)
-           
+
         time.sleep(SLEEP_TIME)
 
 def get_robots(url):
