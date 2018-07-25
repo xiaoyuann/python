@@ -76,28 +76,3 @@ class Throttle:
             if sleep_secs > 0:
                 time.sleep(sleep_secs)
             self.domains[domain] = datetime.now()
-
-
-
-'''def crawl_sitemap(url):
-    sitemap = download(url)
-    links = re.findall('<loc>(.*?)</loc>', sitemap)
-    for link in links:
-        html = download(link)'''
-
-
-
-'''
-cont = '/places/default/view/Afghanistan-1/#/my/'
-up = urldefrag(cont)
-print(up)
-regex_html = re.compile('<a[^>]+href=["\'](.*?)["\']', re.IGNORECASE)
-link = regex_html.findall(cont)
-link1 = ''.join(link)
-print(link1)
-links = re.match('/places/default/(index|view)/(\S+)', link1)
-print(links)
-
-if __name__ == '__main__':
-    link_crawl('http://example.webscraping.com', '/places/default/(index|view)/(\S+)', delay=1, num_retries=1, user_agent='BadCrawler')
-    link_crawl('http://example.webscraping.com', '/places/default/(index|view)/(\S+)', delay=1, num_retries=1, max_depth=1, user_agent='GoodCrawler')'''
