@@ -8,4 +8,4 @@ def main(max_threads):
     thread_crawl(scrape_Callback.seed_url, scrape_callback=scrape_Callback, cache=cache, max_threads=max_threads)
 
 if __name__ == '__main__':
-    main(20)
+    main(5)
