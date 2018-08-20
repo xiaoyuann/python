@@ -1,6 +1,0 @@
-# Netscape HTTP Cookie File
-# http://curl.haxx.se/rfc/cookie_spec.html
-# This is a generated file!  Do not edit.
-
-idas.uestc.edu.cn	FALSE	/	FALSE		JSESSIONID_ids1	0001lG9ZIsXqF9-H9RkRDwq3uhP:-71E4
-idas.uestc.edu.cn	FALSE	/authserver	FALSE		route	3b432386b71e29c2457eaf7073b54875

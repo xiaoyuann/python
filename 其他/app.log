@@ -1,2 +1,0 @@
-Mon, 18 Sep 2017 18:22:54 app.py server started at http://127.0.0.1:9000
-Mon, 18 Sep 2017 18:23:09 helpers.py 127.0.0.1 - - [18/Sep/2017:10:23:09 +0000] "GET / HTTP/1.1" 200 151 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.91 Safari/537.36"
